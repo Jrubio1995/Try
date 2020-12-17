@@ -27,7 +27,7 @@ const TaskStatus = props => {
     const getTasks = async project => {
 
         try {
-            const result = axiosClient.get('/api/tasks', { params: { project } });
+            const result = await axiosClient.get('/api/tasks', { params: { project } });
 
             dispatch({
                 type: PROJECT_TASKS,
@@ -39,9 +39,9 @@ const TaskStatus = props => {
     }
 
     // add a task to a selected project
-    var addTask = async task => {
+    const addTask = async task => {
         console.log(task);
-        var result = axiosClient.post('/api/tasks', task);
+        const result = axiosClient.post('/api/tasks', task);
         console.log(result);
         try {
             dispatch({
